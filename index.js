@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const mongoose=require('mongoose')
 
 const dotenv=require('dotenv')
-const multer = require('multer')
 dotenv.config()
+const multer = require('multer')
 
 
 app.use(cors())

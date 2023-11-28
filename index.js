@@ -1,5 +1,9 @@
 const http = require ('http');
+const { url } = require('url');
+
 const server = http.createServer((req,res)=>{
+    // Get the URL and parse it
+    const parsedUrl = url.parse(req.url,true);
     res.end('Hello World\n')
 });
 

@@ -28,6 +28,10 @@ const server = http.createServer((req, res) => {
     req.on('end',()=>{
         req.on += decoder.end();
 
+        // Check the router for a matching path for a handler. If one is not found, use the notFound handler instead.
+        let chosenHandler = typeof(router[trimmedPath]) !== 'undefined'  ? router[trimmedPath] : handlers.notFound;
+        
+
 
         res.end('Hello World\n');
 

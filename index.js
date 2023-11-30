@@ -21,7 +21,12 @@ const server = http.createServer((req, res) => {
 
     //Get the payload, if any
     const decoder = stringDecoder('utf-8');
-    const buffer =''
+    const buffer ='';
+    req.on('data',()=>{
+        buffer += decoder.write(data);
+    })
+
+    req.on('end',()=>{})
 
     res.end('Hello World\n');
 

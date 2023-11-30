@@ -18,7 +18,7 @@ const server = http.createServer((req, res) => {
     res.end('Hello World\n');
 
     // Log the request/response
-    console.log('Request received on path: ' + trimmedPath);
+    console.log('Request received on path: ' + trimmedPath + ' with method: ' +method+ 'with this query string parameters');
 });
 
 const port = 3200;

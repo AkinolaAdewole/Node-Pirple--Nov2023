@@ -1,18 +1,24 @@
-const http = require ('http');
-const { url } = require('url');
+const http = require('http');
+const url = require('url'); // Import the 'url' module directly
 
-const server = http.createServer((req,res)=>{
+const server = http.createServer((req, res) => {
     // Get the URL and parse it
-    const parsedUrl = url.parse(req.url,true);
+    const parsedUrl = url.parse(req.url, true);
 
     // Get the path
     const path = parsedUrl.pathname;
-    var trimmedPath = path.replace(/^\/+|\/+$/g, '');
-    res.end('Hello World\n')
+    const trimmedPath = path.replace(/^\/+|\/+$/g, '');
+
+    // Get the HTTP method
+    const method = req.method.toLowerCase();
+
+    res.end('Hello World\n');
+
+    // Log the request/response
+    console.log('Request received on path: ' + trimmedPath);
 });
 
-
-const port = 3200
-server.listen(port,()=>{
-    console.log(`server is listening on port ${port}`);
-})
+const port = 3200;
+server.listen(port, () => {
+    console.log(`Server is listening on port ${port}`);
+});

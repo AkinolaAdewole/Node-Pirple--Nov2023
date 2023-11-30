@@ -20,6 +20,7 @@ const server = http.createServer((req, res) => {
     const headers = req.headers;
 
     //Get the payload, if any
+    const decoder = stringDecoder('utf-8');
 
     res.end('Hello World\n');
 

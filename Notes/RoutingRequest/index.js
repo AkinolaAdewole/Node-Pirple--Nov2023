@@ -42,6 +42,7 @@ const server = http.createServer((req, res) => {
 
          // Route the request to the handler specified in the router
          chosenHandler(data,(statusCode, payload)=>{
+            
             // Use rhe status code returned from the handler or set the default payload to an empty object
             statusCode = typeof(statusCode) == 'number' ? statusCode : 200;
 

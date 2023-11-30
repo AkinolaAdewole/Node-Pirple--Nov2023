@@ -7,6 +7,7 @@ const server = http.createServer((req,res)=>{
 
     // Get the path
     const path = parsedUrl.pathname;
+    var trimmedPath = path.replace(/^\/+|\/+$/g, '');
     res.end('Hello World\n')
 });
 

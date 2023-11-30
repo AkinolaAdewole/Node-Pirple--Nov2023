@@ -1,56 +1,64 @@
 const http = require('http');
-const url = require('url');
-const StringDecoder = require('string_decoder').StringDecoder; // Correctly import StringDecoder
+const url = require('url'); // Import the 'url' module directly
+const stringDecoder = require('string_decoder').StringDecoder;
 
 const server = http.createServer((req, res) => {
     // Get the URL and parse it
     const parsedUrl = url.parse(req.url, true);
-
     // Get the path
     const path = parsedUrl.pathname;
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
 
-    // Get the query string as an object
+    //Get the query string as an object
     const queryStringObject = parsedUrl.query;
 
     // Get the HTTP method
     const method = req.method.toLowerCase();
 
-    // Get the headers as an object
+    // get the headers as an objeccts
     const headers = req.headers;
 
+    //Get the payload, if any
+    const decoder = new stringDecoder('utf-8');
+    let buffer ='';
+    req.on('data',(data)=>{
+        buffer += decoder.write(data);
+    })
 
-    // Parsing payloads in Node.js typically involves handling incoming 
-    // data from requests sent to a server. The payload can be in 
-    // various formats such as JSON, form data, or other content types. 
-    // To parse payloads, you can use different Node.js modules or 
-    // native methods to handle different data formats.
+    req.on('end',()=>{
+        req.on += decoder.end();
 
-    // Get the payload, if any
-    const decoder = new StringDecoder('utf-8'); // Correct instantiation
 
-    let buffer = '';
-
-    req.on('data', (data) => {
-        buffer += decoder.write(data); // Append incoming data to the buffer
-    });
-
-    req.on('end', () => {
-      // Finalize the buffer with any remaining data
-      buffer += decoder.end();
-
-        // Here you can use the 'buffer' variable, which contains the payload
+        res.end('Hello World\n');
 
         // Log the request/response
-        console.log('Request received on path: ' + trimmedPath + ' with method: ' + method + ' with these query string parameters', queryStringObject);
-        console.log('Headers received with these headers: ', headers);
-        console.log('Payload received: ', buffer); // Log the received payload
-    });
-
-    res.end('Hello World\n');
+        console.log('Request received on path: ' + trimmedPath + ' with method: ' +method+ ' with this query string parameters', queryStringObject);
+        console.log('Headers received with this headers: ', headers);
+         // Log the received payload
+        console.log('Payload received: ', buffer);
+    })
 });
 
 const port = 3200;
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
+
+
+// Define all handlers
+ let handlers = {};
+
+ // sample handler
+ handlers.sample =  function(data, callback){
+    callback(406,{'name': 'sample handler'});
+ };
+
+ // Not found Handler
+ handlers.notFound = function(data, callback){
+    callback(404);
+ };
+
+ // Define the request router
+ let router = {
+    'sample' : handlers.sample
+ };

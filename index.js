@@ -5,7 +5,6 @@ const stringDecoder = require('string_decoder').StringDecoder;
 const server = http.createServer((req, res) => {
     // Get the URL and parse it
     const parsedUrl = url.parse(req.url, true);
-
     // Get the path
     const path = parsedUrl.pathname;
     const trimmedPath = path.replace(/^\/+|\/+$/g, '');
@@ -20,9 +19,9 @@ const server = http.createServer((req, res) => {
     const headers = req.headers;
 
     //Get the payload, if any
-    const decoder = stringDecoder('utf-8');
-    const buffer ='';
-    req.on('data',()=>{
+    const decoder = new stringDecoder('utf-8');
+    let buffer ='';
+    req.on('data',(data)=>{
         buffer += decoder.write(data);
     })
 
@@ -38,10 +37,18 @@ const server = http.createServer((req, res) => {
          // Log the received payload
         console.log('Payload received: ', buffer);
     })
-
 });
 
 const port = 3200;
 server.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 });
+
+
+// Define all handlers
+ let handlers = {};
+
+ // sample handler
+ handlers.sample =  function(data, callback){
+    callback(406,{'name': 'sample handler'});
+ }

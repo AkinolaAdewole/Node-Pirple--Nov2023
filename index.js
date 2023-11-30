@@ -1,5 +1,6 @@
 const http = require('http');
 const url = require('url'); // Import the 'url' module directly
+const stringDecoder = require('string_decoder').StringDecoder;
 
 const server = http.createServer((req, res) => {
     // Get the URL and parse it
@@ -17,6 +18,8 @@ const server = http.createServer((req, res) => {
 
     // get the headers as an objeccts
     const headers = req.headers;
+
+    //Get the payload, if any
 
     res.end('Hello World\n');
 

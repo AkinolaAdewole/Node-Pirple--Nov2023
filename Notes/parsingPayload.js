@@ -36,7 +36,8 @@ const server = http.createServer((req, res) => {
     });
 
     req.on('end', () => {
-        buffer += decoder.end(); // Finalize the buffer with any remaining data
+      // Finalize the buffer with any remaining data
+      buffer += decoder.end();
 
         // Here you can use the 'buffer' variable, which contains the payload
 

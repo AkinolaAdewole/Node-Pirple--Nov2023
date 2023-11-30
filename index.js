@@ -26,13 +26,19 @@ const server = http.createServer((req, res) => {
         buffer += decoder.write(data);
     })
 
-    req.on('end',()=>{})
+    req.on('end',()=>{
+        req.on += decoder.end();
 
-    res.end('Hello World\n');
 
-    // Log the request/response
-    console.log('Request received on path: ' + trimmedPath + ' with method: ' +method+ ' with this query string parameters', queryStringObject);
-    console.log('Headers received with this headers: ', headers);
+        res.end('Hello World\n');
+
+        // Log the request/response
+        console.log('Request received on path: ' + trimmedPath + ' with method: ' +method+ ' with this query string parameters', queryStringObject);
+        console.log('Headers received with this headers: ', headers);
+         // Log the received payload
+        console.log('Payload received: ', buffer);
+    })
+
 });
 
 const port = 3200;

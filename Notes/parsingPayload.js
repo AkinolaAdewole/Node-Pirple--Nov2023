@@ -19,6 +19,13 @@ const server = http.createServer((req, res) => {
     // Get the headers as an object
     const headers = req.headers;
 
+
+    // Parsing payloads in Node.js typically involves handling incoming 
+    // data from requests sent to a server. The payload can be in 
+    // various formats such as JSON, form data, or other content types. 
+    // To parse payloads, you can use different Node.js modules or 
+    // native methods to handle different data formats.
+
     // Get the payload, if any
     const decoder = new StringDecoder('utf-8'); // Correct instantiation
 

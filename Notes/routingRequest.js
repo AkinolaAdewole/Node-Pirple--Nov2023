@@ -55,16 +55,8 @@ const server = http.createServer((req, res) => {
             res.writeHead(statusCode);
             res.end(payloadString);
             console.log("Returning this response: ",statusCode,payloadString);
-         })
-
-        res.end('Hello World\n');
-
-        // Log the request/response
-        console.log('Request received on path: ' + trimmedPath + ' with method: ' +method+ ' with this query string parameters', queryStringObject);
-        console.log('Headers received with this headers: ', headers);
-         // Log the received payload
-        console.log('Payload received: ', buffer);
-    })
+         });
+    });
 });
 
 const port = 3200;

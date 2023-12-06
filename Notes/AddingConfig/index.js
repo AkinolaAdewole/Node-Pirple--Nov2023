@@ -1,6 +1,7 @@
 const http = require('http');
 const url = require('url'); // Import the 'url' module directly
 const stringDecoder = require('string_decoder').StringDecoder;
+const config = require('./config');
 
 const server = http.createServer((req, res) => {
     // Get the URL and parse it

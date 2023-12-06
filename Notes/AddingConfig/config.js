@@ -2,7 +2,7 @@ var environments = {};
 
 // staging (default) environment
 environments.staging = {
-    'port' : 3400,
+    'port' : 3200,
     'envName' : 'staging'
 };
 

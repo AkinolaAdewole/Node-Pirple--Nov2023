@@ -63,8 +63,8 @@ const server = http.createServer((req, res) => {
 });
 
 const port = 3400;
-server.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+server.listen(config.port, () => {
+    console.log(`Server is listening on port ${config.port}`);
 });
 
 

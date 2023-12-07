@@ -1,10 +1,10 @@
+// Dependencies
 const http = require('http');
 const https = require('https');
 const url = require('url'); // Import the 'url' module directly
 const stringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
-const { log } = require('console');
 
 
 // Instantiate the HTTP server
@@ -92,7 +92,6 @@ const unifiedServer =(req, res) => {
          });
     });
 };
-
 
 // Define all handlers
  let handlers = {};

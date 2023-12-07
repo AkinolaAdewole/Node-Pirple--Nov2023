@@ -1,3 +1,8 @@
+/*
+ * Primary file for API
+ *
+ */
+
 // Dependencies
 const http = require('http');
 const https = require('https');
@@ -97,8 +102,8 @@ const unifiedServer =(req, res) => {
  let handlers = {};
 
  // sample handler
- handlers.sample =  function(data, callback){
-    callback(406,{'name': 'sample handler'});
+ handlers.ping = function(data, callback){
+    callback(202)
  };
 
  // Not found Handler
@@ -108,5 +113,5 @@ const unifiedServer =(req, res) => {
 
  // Define the request router
  let router = {
-    'sample' : handlers.sample
+    'ping' : handlers.ping
  };

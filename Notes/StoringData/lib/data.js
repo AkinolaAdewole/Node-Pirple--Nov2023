@@ -9,3 +9,8 @@ const path = require('path');
 
 // Container for module (to be exported)
 const lib = {}
+
+// Base directory of data folder
+lib.baseDir = path.join(__dirname,'/../.data/');
+
+// Write data to a file

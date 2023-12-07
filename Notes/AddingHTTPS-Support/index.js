@@ -1,9 +1,11 @@
 const http = require('http');
+const https = require('https');
 const url = require('url'); // Import the 'url' module directly
 const stringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
+const fs = require('fs');
 
-const server = http.createServer((req, res) => {
+const unifiedServer =(req, res) => {
     // Get the URL and parse it
     const parsedUrl = url.parse(req.url, true);
     // Get the path
@@ -60,7 +62,10 @@ const server = http.createServer((req, res) => {
             console.log("Returning this response: ",statusCode,payloadString);
          });
     });
-});
+};
+
+
+
 
 const port = 3400;
 server.listen(config.port, () => {

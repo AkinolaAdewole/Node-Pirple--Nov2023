@@ -12,7 +12,17 @@ const httpServer = http.createServer((req,res)=>{
 });
 
 // Start the HTTP server
+httpServer.listen(config.httpPort, ()=>{
+    console.log('The HTTP server is running on port ' +config.httpPort);
+});
 
+
+
+// Instantiate the HTTPS server
+const httpsServerOptions = {
+    'key' : fs.readFileSync('./https/key.pem'),
+    'cert' : fs.readFileSync('./https/cert.pem')
+};
 
 const unifiedServer =(req, res) => {
     // Get the URL and parse it

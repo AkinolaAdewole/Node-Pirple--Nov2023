@@ -103,7 +103,7 @@ const unifiedServer =(req, res) => {
 
  // sample handler
  handlers.ping = function(data, callback){
-    callback(202)
+    callback(200)
  };
 
  // Not found Handler

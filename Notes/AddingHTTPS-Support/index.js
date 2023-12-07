@@ -4,6 +4,7 @@ const url = require('url'); // Import the 'url' module directly
 const stringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
+const { log } = require('console');
 
 
 // Instantiate the HTTP server
@@ -27,6 +28,10 @@ const httpsServer = https.createServer(httpsServerOptions,(req,res)=>{
     unifiedServer(req,res)
 })
 
+// Start the HTTPS server
+httpsServer.listen(config.httpsPort,()=>{
+    console.log('The HTTPS server is running on port ' +config.httpsPort);
+});
 
 
 const unifiedServer =(req, res) => {
@@ -87,14 +92,6 @@ const unifiedServer =(req, res) => {
          });
     });
 };
-
-
-
-
-const port = 3400;
-server.listen(config.port, () => {
-    console.log(`Server is listening on port ${config.port} in ${config.envName} mode`);
-});
 
 
 // Define all handlers

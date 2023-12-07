@@ -5,6 +5,15 @@ const stringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
 
+
+// Instantiate the HTTP server
+const httpServer = http.createServer((req,res)=>{
+    unifiedServer(req,res);
+});
+
+// Start the HTTP server
+
+
 const unifiedServer =(req, res) => {
     // Get the URL and parse it
     const parsedUrl = url.parse(req.url, true);

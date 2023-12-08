@@ -51,3 +51,10 @@ lib.read =(dir, file, callback)=>{
 
 // Update data in a file
 lib.update=(dir, file, data, callback)={}
+
+
+// Delete a file
+lib.delete=(dir, file, callback)={}
+
+// Export the module
+module.exports = lib;

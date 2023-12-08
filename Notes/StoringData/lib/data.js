@@ -32,9 +32,11 @@ lib.create = (dir,file, data, callback)=>{
                         }
                     });
                 }else{
-                    callback('Could not create new file, it may already exist')
+                    callback('Error writing to new file')
                 }
-            })
+            });
+        }else{
+            callback('Could not create new file, it may already exist')
         }
     });
 }

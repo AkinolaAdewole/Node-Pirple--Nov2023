@@ -19,6 +19,12 @@ lib.create = (dir,file, data, callback)=>{
     fs.open(lib.baseDir+dir+'/'+file+'.json','wx', (err, fileDescriptor)=>{
         if(!err && fileDescriptor){
             //convert data to string
+            const stringData = JSON.stringify(data);
+
+            //write to file and close it
+            fs.writeFile(fileDescriptor, stringData, (err)=>{
+                if(!err){}
+            })
         }
     })
 }

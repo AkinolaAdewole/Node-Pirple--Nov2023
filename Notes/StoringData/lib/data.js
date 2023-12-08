@@ -39,4 +39,15 @@ lib.create = (dir,file, data, callback)=>{
             callback('Could not create new file, it may already exist')
         }
     });
-}
+};
+
+
+// Read data from a file
+lib.read =(dir, file, callback)=>{
+    fs.readFile(lib.baseDir+dir+'/'+file+'.json', 'utf8', (err, data)=>{
+        callback(err, data);
+    });
+};
+
+// Update data in a file
+lib.update=(dir, file, data, callback)={}

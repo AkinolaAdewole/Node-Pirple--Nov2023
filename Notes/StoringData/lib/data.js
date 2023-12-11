@@ -52,6 +52,7 @@ lib.read =(dir, file, callback)=>{
 // Update data in a file
 lib.update=(dir, file, data, callback)={
       // Open the file for writing
+      fs.open(lib.baseDir+dir+'/'+file+'.json', 'r+',(err, fileDescriptor)=>{})
 }
 
 

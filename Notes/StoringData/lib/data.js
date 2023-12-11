@@ -50,9 +50,39 @@ lib.read =(dir, file, callback)=>{
 };
 
 // Update data in a file
-lib.update=(dir, file, data, callback)={
+lib.update=(dir, file, data, callback)=>{
       // Open the file for writing
-      fs.open(lib.baseDir+dir+'/'+file+'.json', 'r+',(err, fileDescriptor)=>{})
+       fs.open(lib.baseDir+dir+'/'+file+'.json', 'r+', function(err, fileDescriptor){
+    if(!err && fileDescriptor){
+      // Convert data to string
+      var stringData = JSON.stringify(data);
+
+      // Truncate the file
+      fs.truncate(fileDescriptor,function(err){
+        if(!err){
+          // Write to file and close it
+          fs.writeFile(fileDescriptor, stringData,function(err){
+            if(!err){
+              fs.close(fileDescriptor,function(err){
+                if(!err){
+                  callback(false);
+                } else {
+                  callback('Error closing existing file');
+                }
+              });
+            } else {
+              callback('Error writing to existing file');
+            }
+          });
+        } else {
+          callback('Error truncating file');
+        }
+      });
+    } else {
+      callback('Could not open file for updating, it may not exist yet');
+    }
+  });
+
 }
 
 

@@ -50,7 +50,9 @@ lib.read =(dir, file, callback)=>{
 };
 
 // Update data in a file
-lib.update=(dir, file, data, callback)={}
+lib.update=(dir, file, data, callback)={
+      // Open the file for writing
+}
 
 
 // Delete a file

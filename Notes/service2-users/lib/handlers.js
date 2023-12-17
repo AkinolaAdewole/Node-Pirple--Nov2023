@@ -9,6 +9,8 @@ var _data = require('./data');
 // Define the handlers
 const handlers ={};
 
+// Users
+handlers.users=(data,callback)=>{};
 //Ping handler
 handlers.ping =(data, callback)=>{
     callback(200);
@@ -18,3 +20,6 @@ handlers.ping =(data, callback)=>{
 handlers.notFound=(data,callback)=>{
     callback(404);
 };
+
+// Export the module
+module.exports = handlers

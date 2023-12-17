@@ -10,6 +10,7 @@ const url = require('url'); // Import the 'url' module directly
 const stringDecoder = require('string_decoder').StringDecoder;
 const config = require('./config');
 const fs = require('fs');
+const handler = require('./lib/handlers')
 
 
 // Instantiate the HTTP server

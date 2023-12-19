@@ -4,4 +4,5 @@
  */
 
 //Dependencies
-const _data = require('./data');
+const config = require('./config');
+const crypto = require('crypto');

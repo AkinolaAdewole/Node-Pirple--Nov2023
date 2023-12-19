@@ -5,12 +5,14 @@
 
 // Dependencies
 var _data = require('./data');
+var helpers = require('./helpers');
 
 // Define the handlers
 const handlers ={};
 
 // Users
 handlers.users=(data,callback)=>{};
+
 //Ping handler
 handlers.ping =(data, callback)=>{
     callback(200);

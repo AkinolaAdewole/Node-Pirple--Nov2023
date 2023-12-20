@@ -21,7 +21,20 @@ handlers.notFound=(data,callback)=>{
 };
 
 // Users
-handlers.users=(data,callback)=>{};
+handlers.users = function(data, callback) {
+  // Define acceptable HTTP methods
+  var acceptableMethods = ['post', 'get', 'put', 'delete'];
+
+  // Check if the provided method is in the list of acceptable methods
+  if (acceptableMethods.indexOf(data.method) > -1) {
+    // If it is acceptable, call the corresponding method in handlers._users
+    handlers._users[data.method](data, callback);
+  } else {
+    // If the method is not acceptable, invoke the callback with a status code of 405 (Method Not Allowed)
+    callback(405);
+  }
+};
+
 
 // Container for all the users methods
 handlers._users  = {};

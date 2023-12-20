@@ -39,5 +39,9 @@ handlers.users = function(data, callback) {
 // Container for all the users methods
 handlers._users  = {};
 
+// Users - post
+// Required data: firstName, lastName, phone, password, tosAgreement
+// Optional data: none
+
 // Export the module
 module.exports = handlers
